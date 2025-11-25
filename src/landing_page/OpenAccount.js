@@ -1,6 +1,11 @@
+// frontend/src/landing_page/home/OpenAccount.js
 import React from "react";
 
 function OpenAccount() {
+  const goToSignup = () => {
+    window.location.href = "/signup"; // same frontend app route
+  };
+
   return (
     <div className="container p-5 mb-5">
       <div className="row text-center">
@@ -12,6 +17,7 @@ function OpenAccount() {
         <button
           className="p-2 btn btn-primary fs-5 mb-5"
           style={{ width: "20%", margin: "0 auto" }}
+          onClick={goToSignup}
         >
           Sign up Now
         </button>

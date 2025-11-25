@@ -1,55 +1,77 @@
+// frontend/src/landing_page/Navbar.js
 import React from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  const handleDashboardClick = () => {
-    window.location.href = "http://localhost:3001/dashboard"; // redirecting to Dashboard app
-  };
-
   return (
-    <nav className="navbar navbar-expand-lg border-bottom" style={{ backgroundColor: "#FFF" }}>
-      <div className="container p-2">
-        <Link className="navbar-brand" to="/">
-          <img src="media/images/logo.svg" style={{ width: "25%" }} alt="Logo" />
+    <nav
+      className="navbar navbar-expand-lg border-bottom"
+      style={{ backgroundColor: "#ffffff" }}
+    >
+      <div className="container py-3 d-flex align-items-center">
+        {/* Brand goes to home (/) */}
+        <Link className="navbar-brand d-flex align-items-center" to="/">
+          <span
+            style={{
+              fontWeight: 600,
+              fontSize: "22px",
+              letterSpacing: "2px",
+              color: "#1e88e5",
+            }}
+          >
+            ZERODHA
+          </span>
         </Link>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        <div className="flex-grow-1 d-none d-lg-flex justify-content-end">
+          <ul className="navbar-nav align-items-center gap-4">
+            {/* Signup in navbar → /signup */}
+            <li className="nav-item">
+              <Link className="nav-link" to="/signup">
+                Signup
+              </Link>
+            </li>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
+            {/* Your original code had Contact going to /signup too, keeping same behavior */}
             <li className="nav-item">
-              <Link className="nav-link" to="/signup">Signup</Link>
+              <Link className="nav-link" to="/signup">
+                Contact
+              </Link>
+            </li>
+
+            {/* Other links still anchor to sections on home page */}
+            <li className="nav-item">
+              <a className="nav-link" href="#products">
+                Products
+              </a>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">About</Link>
+              <a className="nav-link" href="#pricing">
+                Pricing
+              </a>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/product">Product</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/pricing">Pricing</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/support">Support</Link>
-            </li>
-            {/* ✅ Dashboard Button */}
-            <li className="nav-item">
-              <button className="btn btn-primary ms-3" onClick={handleDashboardClick}>
-                Go to Dashboard
-              </button>
+              <a className="nav-link" href="#support">
+                Support
+              </a>
             </li>
           </ul>
         </div>
+
+        <button
+          className="border-0 bg-transparent d-lg-none ms-3"
+          type="button"
+        >
+          <span
+            style={{
+              display: "inline-block",
+              fontSize: "24px",
+              lineHeight: "1",
+            }}
+          >
+            ☰
+          </span>
+        </button>
       </div>
     </nav>
   );
