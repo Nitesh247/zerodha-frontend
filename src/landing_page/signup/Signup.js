@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const API_URL = process.env.REACT_APP_API_URL || "https://zerodha-backend-7bz9.onrender.com";
+const Zerodha_URL = process.env.REACT_ZERODHA_URL || "https://zerodha-dashboard-ivs4.onrender.com";
+
+
 function Signup() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
 
@@ -13,7 +17,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3002/signup", form);
+      const res = await axios.post(`${API_URL}/signup`, form);
 
       console.log("Signup response:", res.data);
 
@@ -25,7 +29,7 @@ function Signup() {
       alert(res.data.message || "Signup successful! Redirecting to Dashboard...");
 
       // 🚀 redirect to dashboard app
-      window.location.href = "http://localhost:3001";
+      window.location.href = Zerodha_URL;
     } catch (err) {
       console.error("Signup error:", err.response?.data || err);
       alert(
